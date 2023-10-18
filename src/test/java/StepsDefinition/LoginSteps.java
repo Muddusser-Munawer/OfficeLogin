@@ -1,6 +1,7 @@
 package StepsDefinition;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -55,5 +56,26 @@ public class LoginSteps {
         WebElement dropdown = driver.findElement(By.className("product_sort_container"));
         Select selectObject = new Select(dropdown);
         selectObject.selectByVisibleText("Price (high to low)");
+        
+        
     }
+    @Then("add products to the cart")
+    public void add_products_to_the_cart() throws InterruptedException {
+    	WebElement addToCartButton = driver.findElement(By.id("add-to-cart-sauce-labs-backpack"));
+        addToCartButton.click();
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+      Thread.sleep(5000); 
+        
+      js.executeScript("window.scrollBy(0, 500);");
+    }
+
+    @And("remove products to the cart")
+    public void remove_products_to_the_cart() throws InterruptedException {
+    	WebElement removeFromCartButton = driver.findElement(By.id("remove-sauce-labs-backpack"));
+        removeFromCartButton.click();
+        
+        Thread.sleep(5000); 
+    }
+
+    
 }

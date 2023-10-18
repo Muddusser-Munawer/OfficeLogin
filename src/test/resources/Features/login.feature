@@ -7,3 +7,5 @@ Scenario: Validate Saucedemo website is working
   And Hit Login Button
   Then User navigate to Homepage
   And Select Filters Options
+  Then add products to the cart
+  And  remove products to the cart
